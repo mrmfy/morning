@@ -11,6 +11,7 @@ start_date = os.environ['START_DATE']
 city = os.environ['CITY']
 birthday = os.environ['BIRTHDAY']
 
+
 app_id = os.environ["APP_ID"]
 app_secret = os.environ["APP_SECRET"]
 
@@ -48,6 +49,6 @@ client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature, low, high = get_weather()
-data = {"weather":{"value":wea, "color":'#FFD700'},"temperature":{"value":temperature, "color":'#FFD700'},"temperature_low":{"value":low, "color":'#FFD700'},"temperature_high":{"value":high, "color":'#FFD700'},"love_days":{"value":get_count(), "color":'#FFD700'},"birthday_left":{"value":get_birthday(), "color":'#FFD700'},"words":{"value":get_words(), "color":get_random_color()}}
+data = {"date":{"value":today, "color":get_random_color()}, "city":{value:city},"weather":{"value":wea, "color":'#FFD700'},"temperature":{"value":temperature, "color":'#FFD700'},"temperature_low":{"value":low, "color":'#FFD700'},"temperature_high":{"value":high, "color":'#FFD700'},"love_days":{"value":get_count(), "color":'#FFD700'},"birthday_left":{"value":get_birthday(), "color":'#FFD700'},"words":{"value":get_words(), "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
